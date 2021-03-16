@@ -37,6 +37,14 @@ client.on('messageReactionAdd', async (reaction, user) => {
 			)
 		.setTimestamp()
 		.setFooter('React with 👍 to acknowledge')
+
+		if(reaction.message.attachments.size  > 0) {
+			let index = 1;
+			reaction.message.attachments.forEach(attachment => {
+				reportEmbed.addField(`Attachment ${index++}`, `[Link](${attachment.proxyURL})`);
+			});
+		}
+
 		client.channels.cache.get(config.channelID).send(reportEmbed);
 		user.send(config.message);
 		return;
