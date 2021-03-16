@@ -18,3 +18,7 @@ exports.channelID = 'channel_id';
 
 //message to send users to confirm the report has been sent
 exports.message = 'Thank you for your report! Our mod team will get to it as soon as possible.';
+
+// cooldown in seconds between report reactions to not trigger a reaction, only a log message with the message ID will be written
+exports.reportCooldown = 60;
+
