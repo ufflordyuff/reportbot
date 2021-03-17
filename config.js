@@ -17,7 +17,7 @@ exports.guildID = 'guild_id';
 exports.channelID = 'channel_id';
 
 //message to send users to confirm the report has been sent
-exports.message = 'Thank you for your report! Our mod team will get to it as soon as possible.';
+exports.message = 'Danke für deinen Report. Wir kümmern uns so bald wie möglich um dein Anliegen. Falls du deinen Fall anonym ausführen willst Antworte auf diese Nachricht. Falls du zusätzliches Feedback zu deinem Report wünscht wende dich gerne an uns via dem <@643445139028574258>.';
 
 // cooldown in seconds between report reactions to not trigger a reaction, only a log message with the message ID will be written
 exports.reportCooldown = 60;
