@@ -30,7 +30,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
 		.setTitle('User Report :triangular_flag_on_post:')
 		.addFields(
 			{name: 'Nachricht', value: message},
-			{name: 'Autor', value: reaction.message.author.tag, inline: true},
+			{name: 'Autor', value: reaction.message.author, inline: true},
 			{name: 'Channel', value: `#${reaction.message.channel.name}`, inline: true},
 			{name: 'Link', value: `[Go to Message](https://discordapp.com/channels/${config.guildID}/${reaction.message.channel.id}/${messageId}) :arrow_right:`},
 			)
