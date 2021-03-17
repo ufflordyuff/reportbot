@@ -53,5 +53,26 @@ client.on('messageReactionAdd', async (reaction, user) => {
 		return;
 	}
 });
+client.on('message', message => {
+    if (message.channel.type === "dm" && message.author.id !== client.user.id) {
+        console.log("-----DM-----")
+        console.log(message.content)
+        console.log("-----DM-----")
+        message.author.send("Danke für deine Nachricht");
+        client.channels.cache.get('821385649701388298').send({
+                embed: {
+                color: 0x8b0000,
+                    author: {
+                        name: "Ich habe diese Nachricht bekommen:",
+                    },
+                    description: message.content,
+                    timestamp: new Date(),
+                    footer: {
+                        text: "Staff"
+                    }
+                }
+        });
+    }
+});
 
 client.login(config.token);
