@@ -29,14 +29,13 @@ client.on('messageReactionAdd', async (reaction, user) => {
 		.setColor(config.embedColor)
 		.setTitle('User Report :triangular_flag_on_post:')
 		.addFields(
-			{name: 'Message', value: message},
-			{name: 'Author', value: reaction.message.author.tag, inline: true},
+			{name: 'Nachricht', value: message},
+			{name: 'Autor', value: reaction.message.author.tag, inline: true},
 			{name: 'Channel', value: `#${reaction.message.channel.name}`, inline: true},
-			{name: 'Reported By', value: user.tag, inline: true},
 			{name: 'Link', value: `[Go to Message](https://discordapp.com/channels/${config.guildID}/${reaction.message.channel.id}/${messageId}) :arrow_right:`},
 			)
 		.setTimestamp()
-		.setFooter('React with 👍 to acknowledge')
+		.setFooter('Passt: ✅ , Weg ❎, Warn ❗, Verbale Zurechtweisung ✊')
 
 		if(reaction.message.attachments.size  > 0) {
 			let index = 1;
@@ -45,7 +44,11 @@ client.on('messageReactionAdd', async (reaction, user) => {
 			});
 		}
 
-		client.channels.cache.get(config.channelID).send(reportEmbed);
+		client.channels.cache.get(config.channelID).send(reportEmbed).then(embedMessage  => {embedMessage .react("✅")
+		.then(() =>  embedMessage .react("❎"))
+		.then(() =>  embedMessage .react("❗"))
+		.then(() =>  embedMessage .react("✊"));
+	});
 		user.send(config.message);
 		return;
 	}
